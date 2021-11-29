@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -6,8 +6,12 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  ngOnInit(): void {}
+
   title = 'todo-app';
+
+  inputValue = '';
 
   todoList = [
     {
@@ -27,7 +31,18 @@ export class AppComponent {
     },
   ];
 
-  onSubmit(): void {
-    console.log('Hello World');
+  onAddTask(): void {
+    this.todoList = [
+      ...this.todoList,
+      {
+        id: this.todoList.length + 1,
+        name: this.inputValue,
+        isCompleted: false,
+      },
+    ];
   }
+
+  onChange = (value: string) => {
+    this.inputValue = 'Haha';
+  };
 }

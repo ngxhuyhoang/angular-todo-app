@@ -1,8 +1,8 @@
-<h1>Todo App</h1>
+<div class="container">
+  <h1>Todo App</h1>
 
-<form (ngSubmit)="onSubmit()">
-  <input type="text" name="todo" placeholder="What do you do today ?" />
-  <button type="submit">Add</button>
-</form>
+  <input type="text" name="todo" placeholder="What do you do today ?" [value]="inputValue" />
+  <button (click)="onAddTask()">Add</button>
 
-<app-todo-item *ngFor="let item of todoList" [name]="item.name" [isCompleted]="item.isCompleted"></app-todo-item>
+  <app-todo-item *ngFor="let item of todoList" [name]="item.name" [isCompleted]="item.isCompleted"></app-todo-item>
+</div>
